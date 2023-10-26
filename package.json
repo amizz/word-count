@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test *.spec.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "example": "node index.js example_text/text.txt"
   },
   "author": "",
   "license": "ISC"
