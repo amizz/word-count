@@ -1,0 +1,13 @@
+{
+  "name": "word-count",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test *.spec.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
