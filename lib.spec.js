@@ -3,8 +3,8 @@ import assert from "node:assert";
 
 const text1 = `The quick brown fox jumped over the lazy dog, and the dog, in turn, chased the fox through the fox's den.`;
 
-const filePath1 = `./text.txt`;
-const filePath2 = `./not-found.txt`;
+const filePath1 = `./example_text/text.txt`;
+const filePath2 = `./example_text/not-found.txt`;
 
 test("Count words success", async () => {
     const { countWords } = await import("./lib.js");
@@ -53,7 +53,7 @@ test("Ensure file exist", async () => {
     return assert.doesNotReject(countWordsFromFile(filePath1));
 });
 
-test("Errors if file not exist", async () => {
+test("File not exist should reject", async () => {
     const { countWordsFromFile } = await import("./lib.js");
     return assert.rejects(countWordsFromFile(filePath2));
 });
