@@ -1,12 +1,16 @@
 import { countWordsFromFile, countWords } from "./lib.js";
 
-export default async function main() {
+/**
+ * 
+ * @returns {Promise<Record<string, number>>}
+ */
+export async function main() {
     /**
      * Count words from file path in the argument
      */
     const args = process.argv.slice(2);
     const pathText = getPathOrText(args);
-    const result =
+    const wordCounts =
         pathText.type === "path"
             ? await countWordsFromFile(pathText.value)
             : countWords(pathText.value);
@@ -14,11 +18,11 @@ export default async function main() {
     /**
      * Sorting
      */
-    const arr = Object.entries(result);
+    const arr = Object.entries(wordCounts);
     arr.sort((a, b) => b[1] - a[1]);
     const sorted = Object.fromEntries(arr);
 
-    console.log(sorted);
+    return sorted;
 }
 
 /**
@@ -38,4 +42,6 @@ function getPathOrText(args) {
     return { type: "text", value: args[1] };
 }
 
-main();
+if(process.env.NODE_ENV !== "testing") {
+    console.log(await main());
+}
