@@ -1,5 +1,7 @@
 # Count words and sort by frequency
 
+> Disclaimer: This will only works for languages using English or Latin/Roman characters.
+
 ## Requirements
 Node.js v18+
 
