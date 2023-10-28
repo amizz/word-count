@@ -1,6 +1,7 @@
 import { countWordsFromFile, countWords } from "./lib.js";
 
 /**
+ * main
  * 
  * @returns {Promise<Record<string, number>>}
  */
@@ -26,7 +27,8 @@ export async function main() {
 }
 
 /**
- *
+ * getPathOrText
+ * 
  * @param {string[]} args
  * @return { {type: 'text' | 'path'; value: string} }
  */
@@ -42,6 +44,18 @@ function getPathOrText(args) {
     return { type: "text", value: args[1] };
 }
 
+/**
+ * init
+ * 
+ * @returns {void}
+ */
+async function init() {
+    const result = await main();
+    for (const key in result) {
+        console.log(`${key}: ${result[key]}`)
+    }
+}
+
 if(process.env.NODE_ENV !== "testing") {
-    console.log(await main());
+    init();
 }
